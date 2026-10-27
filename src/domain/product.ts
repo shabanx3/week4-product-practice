@@ -32,6 +32,9 @@ const validateProduct = (params: CreateProductParams): void => {
   ) {
     throw new ProductError('name', 'Product name must be a non-empty string.');
   }
+  if (params.name.length > 100) {
+    throw new ProductError('name', 'Product name must not exceed 100 characters.');
+  }
   if (
     typeof params.pricePence !== 'number' ||
     params.pricePence < 0 ||
